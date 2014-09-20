@@ -1,0 +1,1 @@
+#Basic MEAN Project Structure
