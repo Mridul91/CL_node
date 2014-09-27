@@ -1,5 +1,7 @@
 #Basic MEAN Project Structure
 
+Server
+
 ###Directory Structure
  >Server --\
            |
