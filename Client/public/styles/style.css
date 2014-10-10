@@ -1,0 +1,22 @@
+#add-contact
+{
+	margin-left: 28px;
+	border: 1px solid green;
+}
+.row2
+{
+	top:100px;
+	left: 500px;
+	width: 400px;
+	height: 100px;
+	background-color: white;
+	border: 1px solid black;
+	margin-right: 20px;
+	margin-bottom: 60px;
+	z-index:10;
+	position: absolute;
+}
+
+.listing-name li {
+	cursor: pointer;
+}

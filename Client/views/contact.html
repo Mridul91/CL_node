@@ -1,0 +1,68 @@
+<html ng-app="contacts">
+<head>
+	<link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap.css">
+	<script type="text/javascript" src="components/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="scripts/app.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+	<title>Contact list</title>
+</head>
+<body>
+  <div class="container">
+     <div class="row">
+          
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+           
+            <h2>All Contacts</h2> 
+            <hr/>
+            <div ng-controller="ContactList as CL">
+              <div class="row2" ng-show="CL.displayDiv " id="dis">
+                  <ul>
+                     <li> Name : {{CL.divitem.name}}<br/>
+                          Title: {{CL.divitem.post}}<br/>
+                          Email:{{CL.divitem.email}}<br/>
+                          Phone:{{CL.divitem.phone}}
+                     </li>
+                  </ul>
+              </div>
+             <div class="searchtext">
+                <input type="search" ng-model="search.$" name="contsearch" id="inputContsearch" class="form-control" value="" required="required" placeholder="Search.....">
+                 <ul class='listing-name'>
+                  <li ng-repeat="item in CL.Clists|filter:search|orderBy:'name'">
+                      <h4 ng-click='CL.display(item)'>{{item.name}}</h4>
+                  </li>
+                </ul>
+              </div>    
+     
+            <a href ng-click="show=!show" class="btn btn-primary btn-lg " id="add-contact">Add Contact</a>
+              
+               <div name="contactForm" ng-show="show">
+                 <blockquote>
+          
+                    <h4>{{CL.Clist.name}}</h4>
+                    <h5>{{CL.Clist.post}}</h5>
+                    <h5>{{CL.Clist.email}}</h5>
+                    <h5>{{CL.Clist.phone}}</h5>
+                    <hr/>
+  
+                 </blockquote>
+
+                  Name:<input ng-model="CL.Clist.name" type="text" name="name" id="inputName" class="form-control" value="" required="required" title="">
+
+                  Title:<input ng-model="CL.Clist.post" type="text" name="post" id="inputPost" class="form-control" value="" required="required" title="">
+
+                  Email:<input ng-model="CL.Clist.email" type="email" name="email" id="inputEmail" class="form-control" value="" required="required" title="">
+
+                  PhoneNo:<input ng-model="CL.Clist.phone"type="number" name="phone" id="input" class="form-control" value="" min="{8"} max="{12}" step="" required="required" title="">
+
+                  <br/>
+   
+                  <button type="submit" class="btn btn-primary" ng-click="CL.addContact()"> Submit</button>
+            
+                </div> 
+             </div>
+         </div>
+     </div>
+  
+</div>
+</body>
+</html>
