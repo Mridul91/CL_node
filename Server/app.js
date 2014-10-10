@@ -6,14 +6,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express();
 
-var AppRoot = __dirname+'../Client/';
+var AppRoot = __dirname+'/../Client/';
 // view engine setup
-app.set('views', path.join(AppRoot, 'views'));
-app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
+app.set('views', AppRoot + 'views');
+app.set('view engine', 'html');
+
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -23,7 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(AppRoot, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,8 +1,20 @@
 #!/usr/bin/env node
 var debug = require('debug')('meanStack');
 var app = require('../app');
+var config = require('../config');
+app.set('port', config.Port);
 
-app.set('port', process.env.PORT || 3000);
+
+if(config.livereload === true){
+     /**
+      * [livereload description]
+      * @type {[type]}
+      */
+     var path = require('path');
+     var rootPath = path.normalize(__dirname + '/../..');
+     require('livereload').createServer().watch(rootPath + "/Client");
+     debug('livereload is running.');
+}
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
